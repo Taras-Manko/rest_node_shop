@@ -1,0 +1,54 @@
+POST  http://localhost:3000/api/register
+Content-Type: application/json
+
+{
+    "email":"manko5613@gmail.com",
+    "name":"Taras",
+    "phone":"3333333",
+    "password":"123"
+}
+
+###
+
+POST  http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "email":"manko5613@gmail.com",
+    "password":"123"
+}
+
+###
+
+GET  http://localhost:3000/api/items
+Content-Type: application/json
+Authorization:token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDBhZTlhZWMxZmJiMjIwMmM5Mjc0NzMiLCJlbWFpbCI6Im1hbmtvNTYxM0BnbWFpbC5jb20iLCJpYXQiOjE2MTEzMzE3MjcsImV4cCI6MTYxMTMzNTMyN30.KhoXsoqeiWfNlY-_HU-W1DnrC8OWfpUUxsQWlZuNC-M
+
+
+
+###
+
+POST  http://localhost:3000/api/items
+Content-Type: application/json
+Authorization:token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDBhZTlhZWMxZmJiMjIwMmM5Mjc0NzMiLCJlbWFpbCI6Im1hbmtvNTYxM0BnbWFpbC5jb20iLCJpYXQiOjE2MTEzMjgwMDcsImV4cCI6MTYxMTMzMTYwN30.Y5WxTII2YByvKtkaJem9VeLMxXv_oxZpy9Mk5c7gvE8
+
+{
+    "name":"@gmail.com",
+    "price":"123"
+}
+
+###
+
+GET  http://localhost:3000/api/items/600aed136c49e00fb46c7c07
+Content-Type: application/json
+Authorization:token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDBhZTlhZWMxZmJiMjIwMmM5Mjc0NzMiLCJlbWFpbCI6Im1hbmtvNTYxM0BnbWFpbC5jb20iLCJpYXQiOjE2MTEzMjgwMDcsImV4cCI6MTYxMTMzMTYwN30.Y5WxTII2YByvKtkaJem9VeLMxXv_oxZpy9Mk5c7gvE8
+
+###
+
+PUT  http://localhost:3000/api/items/600aed136c49e00fb46c7c07
+Content-Type: application/json
+Authorization:token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDBhZTlhZWMxZmJiMjIwMmM5Mjc0NzMiLCJlbWFpbCI6Im1hbmtvNTYxM0BnbWFpbC5jb20iLCJpYXQiOjE2MTEzMjgwMDcsImV4cCI6MTYxMTMzMTYwN30.Y5WxTII2YByvKtkaJem9VeLMxXv_oxZpy9Mk5c7gvE8
+
+{
+    "name":"Salo"
+}
