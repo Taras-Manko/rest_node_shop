@@ -7,6 +7,7 @@ const {
 
 const getProducts = async (req, res) => {
     await Product.find()
+        .populate('user')
         .then(prod => {
             const response = {
                 count: prod.length,
@@ -15,7 +16,8 @@ const getProducts = async (req, res) => {
                         name: p.name,
                         price: p.price,
                         id: p._id,
-                        productImage: p.productImage
+                        productImage: p.productImage,
+                        user:p.user
                     }
                 })
             }
@@ -32,7 +34,8 @@ const postProducts = async (req, res) => {
 
     const product = new Product({
         name: req.body.name,
-        price: req.body.price
+        price: req.body.price,
+        user:req.userData
     })
     await product.save((err, prod) => {
         if (err) {
@@ -77,9 +80,9 @@ const postProductsImages = async (req, res) => {
 const getIdProducts = async (req, res) => {
     const id = req.params.id
     await Product.findById(id)
+        .populate('user')
         .exec()
         .then(prod => {
-            console.log(prod)
             res.status(200).json(prod)
         })
         .catch(err => console.log(err.message))
@@ -94,10 +97,9 @@ const updateProducts = async (req, res) => {
             })
         }
     try {
-        await Product.findOneAndUpdate(req.params.id, req.body)
-        res.status(200).json({
-            message: 'updated'
-        })
+        const items = await Product.findOneAndUpdate(req.params.id, req.body)
+        .populate('user')
+        res.status(200).json(items)
 
     } catch (error) {
         res.json(error.message)
