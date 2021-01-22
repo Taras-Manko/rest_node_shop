@@ -14,9 +14,9 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 app.use('/uploads',express.static('uploads'))
 
-app.use('/products',routerProducts)
+app.use('/api/items',routerProducts)
 app.use('/orders',orderProducts)
-app.use('/user',userProducts)
+app.use('/api',userProducts)
 
 app.use((req,res,next) => {
     const error = new Error('Not found')

@@ -7,8 +7,6 @@ const {
 
 const getProducts = async (req, res) => {
     await Product.find()
-        .select('name price _id productImage')
-        .exec()
         .then(prod => {
             const response = {
                 count: prod.length,
@@ -90,7 +88,7 @@ const getIdProducts = async (req, res) => {
 
 const updateProducts = async (req, res) => {
     const {title} = req.body
-        if(title.length < 3 ) {
+        if(title.value.length < 3 ) {
             res.sendStatus(422).json({
                 message:"Title should contain at least 3 characters"
             })
