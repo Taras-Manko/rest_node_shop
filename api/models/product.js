@@ -2,7 +2,9 @@ const {Schema,model} = require('mongoose')
 
 const productSchema = new Schema({
    name:{
-      type:String
+      type:String,
+      minlength:3
+      
    },
    price:{
       type:Number
@@ -16,6 +18,6 @@ const productSchema = new Schema({
 
    }
 
-},{timestamps:true})
+},{ timestamps:true })
 
 module.exports = model('Product',productSchema)

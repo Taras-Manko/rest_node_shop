@@ -6,7 +6,6 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const key = require('./config/app')
 const routerProducts = require('./api/routes/products')
-const orderProducts = require('./api/routes/orders')
 const userProducts = require('./api/routes/user')
 
 app.use(morgan('dev'))
@@ -15,7 +14,6 @@ app.use(bodyParser.json())
 app.use('/uploads',express.static('uploads'))
 
 app.use('/api/items',routerProducts)
-app.use('/orders',orderProducts)
 app.use('/api',userProducts)
 
 app.use((req,res,next) => {

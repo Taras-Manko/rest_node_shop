@@ -7,7 +7,6 @@ const {
 } = require('../../middleware/file')
 
 const getProducts = async (req, res) => {
-    console.log(req.userData)
     await Product.find()
         .populate('user')
         .then(prod => {
@@ -19,7 +18,9 @@ const getProducts = async (req, res) => {
                         price: p.price,
                         id: p._id,
                         productImage: p.productImage,
-                        user:p.user
+                        user:p.user,
+                        createdAt:p.updatedAt,
+                        updatedAt:p.updatedAt
                     }
                 })
             }
@@ -41,7 +42,7 @@ const postProducts = async (req, res) => {
     product = await User.populate(product,{path : 'user'})
     await product.save((err, prod) => {
         if (err) {
-            console.log(err)
+            res.status(500).json(err.errors.name.properties.message)
         }
         if (prod) {
             res.status(201).json({
@@ -88,15 +89,10 @@ const getIdProducts = async (req, res) => {
 }
 
 const updateProducts = async (req, res) => {
-    const {name} = req.body
-        if(name.length < 3 ) {
-            res.sendStatus(422).json({
-                message:"Title should contain at least 3 characters"
-            })
-        }
     try {
         const items = await Product.findByIdAndUpdate(req.params.id, req.body)
         .populate('user')
+        await items.save()
         res.status(200).json(items)
 
     } catch (error) {
