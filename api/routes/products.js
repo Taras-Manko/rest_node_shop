@@ -6,7 +6,7 @@ const authToken = require('../../middleware/token')
 const {getProducts,postProducts,getIdProducts,updateProducts,deletedProduct,postProductsImages} = require('../controllers/product')
 
 router.get('/',authToken,getProducts )
-router.post('/:id/messages',authToken, upload.single('productImage'),postProductsImages)
+router.post('/:id/images',authToken, upload.single('productImage'),postProductsImages)
 router.post('/',authToken,postProducts)
 router.get('/:id',authToken,getIdProducts)
 router.put('/:id',authToken, updateProducts)
