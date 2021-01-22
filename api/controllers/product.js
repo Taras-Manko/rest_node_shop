@@ -5,9 +5,9 @@ const {
     storage,
     fileFilter
 } = require('../../middleware/file')
-const { findByIdAndUpdate } = require('../models/product')
 
 const getProducts = async (req, res) => {
+    console.log(req.userData)
     await Product.find()
         .populate('user')
         .then(prod => {
@@ -33,7 +33,6 @@ const getProducts = async (req, res) => {
 }
 
 const postProducts = async (req, res) => {
-    console.log(req.userData.userId)
     let product = new Product({
         name: req.body.name,
         price: req.body.price,

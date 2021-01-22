@@ -23,11 +23,18 @@ const registerUser = async (req, res) => {
             password: hashPass
         })
         await user.save()
-
+        console.log(user)
     }
 
 }
 
+
+const getMe = async (req,res) => {
+    User.findById(req.userData.userId)
+    .select('email name phone')
+    .then(result => res.json(result))
+    .catch(err => console.log(err))
+}
 
 const loginUser = async (req,res) => {
     const user = await User.findOne({email: req.body.email})
@@ -60,4 +67,4 @@ const loginUser = async (req,res) => {
  }
 
 
-module.exports = {registerUser,loginUser}
+module.exports = {registerUser,loginUser,getMe}

@@ -1,8 +1,9 @@
 const router = require('express').Router()
-const {loginUser,registerUser} = require('../controllers/user')
+const authToken = require('../../middleware/token')
+const {loginUser,registerUser,getMe} = require('../controllers/user')
 
 router.post('/register', registerUser)
-
+router.get('/me',authToken,getMe)
 router.post('/login',loginUser)
 
 
